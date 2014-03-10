@@ -52,4 +52,4 @@
     dest=/tmp/virtuoso.isql
 
 - name: Run isql script to enable sparql permissions.
-  command: "{{ virtuoso_install_dir }}/bin/isql 1111 dba dba VERBOSE=OFF BANNER=OFF PROMPT=OFF ECHO=OFF BLOBS=ON ERRORS=stdout /tmp/virtuoso.isql"1
+  command: "{{ virtuoso_install_dir }}/bin/isql 1111 dba dba VERBOSE=OFF BANNER=OFF PROMPT=OFF ECHO=OFF BLOBS=ON ERRORS=stdout /tmp/virtuoso.isql"
