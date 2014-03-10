@@ -3,45 +3,44 @@
 
 - name: Update aptitude cache and install dependencies.
   apt:
-    pkg = {{ item }}
-  	state = present 
-  	update_cache = yes 
-  	cache_valid_time = 3600
+    pkg={{ item }}
+    state=present 
+    update_cache=yes 
+    cache_valid_time=3600
   with_items:
-  	- git
-  	- autoconf
-  	- automake
-  	- libtool
-  	- flex
-  	- bison
-  	- gperf
-  	- gawk
-  	- m4
-  	- make
-  	- openssl
-  	- libssl-dev
-
+    - git
+    - autoconf
+    - automake
+    - libtool
+    - flex
+    - bison
+    - gperf
+    - gawk
+    - m4
+    - make
+    - openssl
+    - libssl-dev    
 
 - name: Clone stable/7 branch of Virtuoso Github repo.
   git: 
-    repo = https://github.com/openlink/virtuoso-opensource.git
-  	dest = /tmp/virtuoso
-  	version = stable/7
+    repo=https://github.com/openlink/virtuoso-opensource.git
+    dest=/tmp/virtuoso
+    version=stable/7
 
 - name: Autogen the build configuration
-  commnad: /tmp/virtuoso/autogen.sh 
-  	chdir = /tmp/virtuoso 
-  	creates = /tmp/virtuoso/autogen.log
-  	executable = /bin/bash
+  command: /tmp/virtuoso/autogen.sh 
+    chdir=/tmp/virtuoso 
+    creates=/tmp/virtuoso/autogen.log
+    executable=/bin/bash
 
 - name: Configure Makefile
   command: /tmp/virtuoso/configure --prefix={{ virtuoso_install_dir }}
-  	chdir = /tmp/virtuoso
-  	creates = /tmp/virtuoso/Makefile
+    chdir=/tmp/virtuoso
+    creates=/tmp/virtuoso/Makefile
   environment:
-  	 cflags: "-O2 -m64"
+     cflags: "-O2 -m64"
 
 - name: Build Virtuoso from source
   command: make && make install
-    chdir = /tmp/virtuoso
-   	creates = {{ virtuoso_install_dir }}
+    chdir=/tmp/virtuoso
+    creates={{ virtuoso_install_dir }}
