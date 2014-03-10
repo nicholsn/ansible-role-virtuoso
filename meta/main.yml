@@ -122,5 +122,6 @@ dependencies:
   - {role: nicholsn.supervisor, 
      name: virtuoso,
      command: "{{ virtuoso_install_dir }}/bin/virtuoso-t +foreground",
-     directory: "{{ virtuoso_insta1ll_dir }}/var/lib/virtuoso/db",
-     startsecs: 10}
+     directory: "{{ virtuoso_install_dir }}/var/lib/virtuoso/db",
+     startsecs: 10,
+     user: root}
