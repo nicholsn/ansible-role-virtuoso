@@ -17,7 +17,7 @@ galaxy_info:
   # the ones that apply to your role. If you don't see your 
   # platform on this list, let us know and we'll get it added!
   #
-  #platforms:
+  platforms:
   #- name: EL
   #  versions:
   #  - all
@@ -100,13 +100,13 @@ galaxy_info:
   # Below are all categories currently available. Just as with
   # the platforms above, uncomment those that apply to your role.
   #
-  #categories:
+  categories:
   #- cloud
   #- cloud:ec2
   #- cloud:gce
   #- cloud:rax
-  #- database
-  #- database:nosql
+  - database
+  - database:nosql
   #- database:sql
   #- development
   #- monitoring
@@ -121,6 +121,6 @@ dependencies:
   # to this list.
   - {role: nicholsn.supervisor, 
      name: virtuoso,
-     command: {{ virtuoso_install_dir }}/bin/virtuoso-t +wait +configfile {{ virtuoso_install_dir }}/var/lib/virtuoso/db/virtuoso.ini,
-     directory: /root
+     command: "{{ virtuoso_install_dir }}/bin/virtuoso-t +wait +configfile {{ virtuoso_install_dir }}/var/lib/virtuoso/db/virtuoso.ini",
+     directory: /root,
      user: root}
