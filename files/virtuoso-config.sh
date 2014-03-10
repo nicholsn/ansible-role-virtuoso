@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 # Adapted configuration from https://github.com/openphacts/ops-platform-setup/blob/master/vagrant_install/bootstrap.sh
+# NOTE: not used in the ansible-role-virtuoso, but a future version should enable configuring the options herein.
 
 #set NumberOfBuffers and MaxDirtyBuffers parameters in Virtuoso.ini
 totalMem=$(cat /proc/meminfo | grep "MemTotal" | grep -o "[0-9]*")

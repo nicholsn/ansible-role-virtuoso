@@ -2,7 +2,7 @@
 # handlers file for virtuoso
 
 - name: start virtuoso 
-  supervisorctl: name=virtuoso state=started
+  supervisorctl: name=virtuoso state=restarted
 
 - name: stop virtuoso
   supervisorctl: name=virtuoso state=stopped
