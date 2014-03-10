@@ -3,3 +3,26 @@
 
 - name: start virtuoso 
   supervisorctl: name=virtuoso state=started
+
+- name: stop virtuoso
+  supervisorctl: name=virtuoso state=stopped
+
+- name: clean source files
+  file: path=/tmp/virtuoso state=absent
+
+- name: remove build libs
+  apt:
+    pkg={{ item }}
+    state=absent 
+  with_items:
+    - autoconf
+    - automake
+    - libtool
+    - flex
+    - bison
+    - gperf
+    - gawk
+    - m4
+    - make
+    - openssl
+    - libssl-dev

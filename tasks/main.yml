@@ -44,9 +44,8 @@
   command: make install
     chdir=/tmp/virtuoso
     creates={{ virtuoso_install_dir }}/bin/virtuoso-t
-  
-- name: Start virtuoso.
-  supervisorctl: name=virtuoso state=started
+  notify: 
+    - start virtuoso
 
 - name: Copy isql file to enable sparql
   copy: 
@@ -55,3 +54,7 @@
 
 - name: Run isql script to enable sparql permissions.
   command: "{{ virtuoso_install_dir }}/bin/isql 1111 dba dba VERBOSE=OFF BANNER=OFF PROMPT=OFF ECHO=OFF BLOBS=ON ERRORS=stdout /tmp/virtuoso.isql"
+  notify:
+    - stop virtuoso
+    - clean source files
+    - remove build libs
