@@ -1,2 +1,4 @@
 ---
 # vars file for virtuoso
+
+virtuoso_install_dir: /usr/local/virtuoso-opensource
