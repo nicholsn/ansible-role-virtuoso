@@ -1,9 +1,6 @@
 ---
 # handlers file for virtuoso
 
-- name: start virtuoso 
-  service: name=supervisor state=restarted
-
 - name: stop virtuoso
   supervisorctl: name=virtuoso state=stopped
 

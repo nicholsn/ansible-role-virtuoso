@@ -49,8 +49,9 @@
   copy: 
     src=virtuoso.isql
     dest=/tmp/virtuoso.isql
-  notify: 
-    - start virtuoso
+
+- name: Start virtuoso 
+  supervisorctl: name=virtuoso state=restarted
 
 - name: Run isql script to enable sparql permissions.
   command: "{{ virtuoso_install_dir }}/bin/isql 1111 dba dba VERBOSE=OFF BANNER=OFF PROMPT=OFF ECHO=OFF BLOBS=ON ERRORS=stdout /tmp/virtuoso.isql"
