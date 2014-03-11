@@ -1,0 +1,9 @@
+---
+# Playbook for virtuoso container
+
+- hosts: virtuoso-local
+  remote_user: root
+  sudo: yes
+
+  roles:
+    - nicholsn.virtuoso

@@ -1,0 +1,5 @@
+[virtuoso-vagrant]
+192.168.100.10
+
+[virtuoso-local]
+localhost              ansible_connection=local
