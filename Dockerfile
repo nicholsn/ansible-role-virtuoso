@@ -1,11 +1,11 @@
-# Virtuoso container
-FROM nicholsn/ansible:latest
+FROM ubuntu:12.04
 MAINTAINER Nolan Nichols <nolan.nichols@gmail.com>
 
 RUN apt-get update 
+RUN apt-get install -y python-software-properties
+RUN add-apt-repository -y ppa:rquillo/ansible
+RUN apt-get update
+RUN apt-get install -y ansible git
 RUN ansible-galaxy install nicholsn.supervisor nicholsn.virtuoso
-RUN ansible-pull -C master -d /ansible -i hosts -U https://github.com/niquery/ansible-role-virtuoso.git local.yml
-
-EXPOSE 8890:8890
-
-ENTRYPOINT ["/usr/bin/supervisorctl", "start", "virtuoso"]
+RUN git clone https://github.com/niquery/ansible-role-virtuoso.git /tmp
+RUN ansible-playbook -i /tmp/hosts /tmp/local.yml -vvv
