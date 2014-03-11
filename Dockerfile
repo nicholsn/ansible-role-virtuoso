@@ -1,4 +1,4 @@
-# Engine container
+# Virtuoso container
 FROM nicholsn/ansible:latest
 MAINTAINER Nolan Nichols <nolan.nichols@gmail.com>
 
