@@ -1,11 +1,9 @@
 FROM ubuntu:12.04
 MAINTAINER Nolan Nichols <nolan.nichols@gmail.com>
 
-RUN apt-get update 
-RUN apt-get install -y python-software-properties
-RUN add-apt-repository -y ppa:rquillo/ansible
+RUN echo "deb http://us.archive.ubuntu.com/ubuntu/ precise-backports main restricted universe multiverse" >> /etc/apt/sources.list
 RUN apt-get update
 RUN apt-get install -y ansible git
-RUN ansible-galaxy install nicholsn.supervisor nicholsn.virtuoso
-RUN git clone https://github.com/niquery/ansible-role-virtuoso.git /tmp
-RUN ansible-playbook -i /tmp/hosts /tmp/local.yml -vvv
+RUN ansible-galaxy install nicholsn.supervisor 
+RUN ansible-galaxy install nicholsn.virtuoso
+RUN ansible-pull -U https://github.com/niquery/ansible-role-virtuoso.git -d /ansible -i hosts local.yml
