@@ -54,6 +54,7 @@
   supervisorctl: name=virtuoso state=restarted
 
 - name: Run isql script to enable sparql permissions.
+  wait_for: port=1111 delay=10
   command: "{{ virtuoso_install_dir }}/bin/isql 1111 dba dba VERBOSE=OFF BANNER=OFF PROMPT=OFF ECHO=OFF BLOBS=ON ERRORS=stdout /tmp/virtuoso.isql"
   notify:
     - stop virtuoso
