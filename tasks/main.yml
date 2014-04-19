@@ -38,7 +38,7 @@
     chdir=/tmp/virtuoso
     creates=/tmp/virtuoso/Makefile
   environment:
-     cflags: "-O2 -m64"
+    cflags: "-O2 -m64"
 
 - name: Build Virtuoso from source.
   command: make install
