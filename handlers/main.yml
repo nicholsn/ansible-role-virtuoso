@@ -7,6 +7,9 @@
 - name: clean source files
   file: path=/tmp/virtuoso state=absent
 
+- name: stop supervisor
+  service: name=supervisor state=stopped
+
 - name: remove build libs
   apt:
     pkg={{ item }}

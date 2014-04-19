@@ -124,5 +124,5 @@ dependencies:
      command: "{{ virtuoso_install_dir }}/bin/virtuoso-t +foreground",
      directory: "{{ virtuoso_install_dir }}/var/lib/virtuoso/db",
      startsecs: 20,
-     autostart: "false",
+     autostart: "true",
      user: root}

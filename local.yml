@@ -6,4 +6,5 @@
   sudo: yes
 
   roles:
+    - nicholsn.supervisor
     - nicholsn.virtuoso

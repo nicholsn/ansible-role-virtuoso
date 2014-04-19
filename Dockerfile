@@ -9,5 +9,3 @@ RUN ansible-galaxy install nicholsn.virtuoso
 RUN ansible-pull -U https://github.com/niquery/ansible-role-virtuoso.git -d /ansible -i hosts local.yml
 
 EXPOSE 8890:8890
-
-CMD ["/usr/bin/supervisord"]
