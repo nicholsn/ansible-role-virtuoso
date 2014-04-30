@@ -25,7 +25,7 @@
   git: 
     repo=https://github.com/openlink/virtuoso-opensource.git
     dest=/tmp/virtuoso
-    version=stable/7
+    version=develop/7
 
 - name: Autogen the Virtuoso build configuration
   shell: /tmp/virtuoso/autogen.sh 
