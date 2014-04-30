@@ -21,7 +21,7 @@
     - openssl
     - libssl-dev
 
-- name: Clone stable/7 branch of Virtuoso Github repo.
+- name: Clone develop/7 branch of Virtuoso Github repo.
   git: 
     repo=https://github.com/openlink/virtuoso-opensource.git
     dest=/tmp/virtuoso

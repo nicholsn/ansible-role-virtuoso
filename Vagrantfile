@@ -43,8 +43,17 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   #   vb.customize ["modifyvm", :id, "--memory", "1024"]
   # end
 
-  # Build with Docker
-  config.vm.provision :docker do |container|
-      container.pull_images "nicholsn/virtuoso"
+  # Pull Docker Container
+  #config.vm.provision :docker do |container|
+  #    container.pull_images "nicholsn/virtuoso"
+  #end
+
+  # Build from source
+  config.vm.provision "shell" do |s|
+    s.inline = "apt-get update"
+    s.inline += "&& apt-get install -y ansible git"
+    s.inline += "&& ansible-galaxy install nicholsn.supervisor --force"
+    s.inline += "&& ansible-galaxy install nicholsn.virtuoso --force"
+    s.inline += "&& ansible-playbook -i /etc/ansible/roles/nicholsn.virtuoso/hosts /etc/ansible/roles/nicholsn.virtuoso/local.yml -v"
   end
 end
