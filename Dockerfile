@@ -7,6 +7,9 @@ RUN apt-get update
 RUN apt-get install -y ansible git
 RUN ansible-galaxy install nicholsn.supervisor 
 RUN ansible-galaxy install nicholsn.virtuoso
-RUN cd /etc/ansible/roles/nicholsn.virtuoso/ && ansible-playbook -i hosts local.yml
+WORKDIR /etc/ansible/roles/nicholsn.virtuoso
+RUN ansible-playbook -i hosts local.yml
 
-EXPOSE 8890:8890
+EXPOSE 22 8890:8890
+
+CMD ["/usr/bin/supervisord"]
