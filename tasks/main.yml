@@ -59,4 +59,5 @@
   notify:
     - stop virtuoso
     - clean source files
+    - stop supervisor
     - remove build libs
