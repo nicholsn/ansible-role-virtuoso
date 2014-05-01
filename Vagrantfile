@@ -54,7 +54,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Build from source
   config.vm.provision "shell" do |s|
     s.inline = "apt-get update"
-    s.inline += "&& apt-get install -y ansible git"
+    s.inline += "&& apt-get install -y ansible"
     s.inline += "&& ansible-galaxy install nicholsn.supervisor --force"
     s.inline += "&& ansible-galaxy install nicholsn.virtuoso --force"
     s.inline += "&& ansible-playbook -i /etc/ansible/roles/nicholsn.virtuoso/hosts /etc/ansible/roles/nicholsn.virtuoso/local.yml -v"
