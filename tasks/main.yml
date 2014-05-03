@@ -10,6 +10,15 @@
   with_items:
     - git
     - build-essential
+    - aclocal
+    - autoconf
+    - autoheader
+    - automake
+    - glibtoolize
+    - bison
+    - flex
+    - gawk
+    - gperf
 
 - name: Clone stable/7 branch of Virtuoso Github repo.
   git: 
