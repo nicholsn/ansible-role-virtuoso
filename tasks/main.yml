@@ -8,24 +8,14 @@
     update_cache=yes 
     cache_valid_time=3600
   with_items:
-    - git
-    - autoconf
-    - automake
-    - libtool
-    - flex
-    - bison
-    - gperf
-    - gawk
-    - m4
-    - make
-    - openssl
-    - libssl-dev
+    - git1
+    - build-essential
 
-- name: Clone develop/7 branch of Virtuoso Github repo.
+- name: Clone stable/7 branch of Virtuoso Github repo.
   git: 
     repo=https://github.com/openlink/virtuoso-opensource.git
     dest=/tmp/virtuoso
-    version=develop/7
+    version=stable/7
 
 - name: Autogen the Virtuoso build configuration
   shell: /tmp/virtuoso/autogen.sh 

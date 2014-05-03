@@ -4,7 +4,7 @@ ENV UPDATED "Wed Apr 30 23:51:39 PDT 2014"
 
 RUN echo "deb http://us.archive.ubuntu.com/ubuntu/ precise-backports main restricted universe multiverse" >> /etc/apt/sources.list
 RUN apt-get update
-RUN apt-get install -y ansible git sudo bzip2 python-apt openssh-client
+RUN apt-get install -y ansible
 RUN ansible-galaxy install nicholsn.supervisor 
 RUN ansible-galaxy install nicholsn.virtuoso
 WORKDIR /etc/ansible/roles/nicholsn.virtuoso
