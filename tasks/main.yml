@@ -10,7 +10,6 @@
   with_items:
     - git
     - build-essential
-    - aclocal
     - autoconf
     - autoheader
     - automake
