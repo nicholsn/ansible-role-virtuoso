@@ -17,6 +17,8 @@
     - gawk
     - gperf
     - libtool
+    - openssl
+    - libssl-dev
 
 - name: Clone stable/7 branch of Virtuoso Github repo.
   git: 
