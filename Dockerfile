@@ -7,10 +7,9 @@ RUN apt-get update
 RUN apt-get install -y build-essential debhelper autotools-dev autoconf automake libtool flex bison gperf gawk m4 unzip wget > /dev/null
 RUN wget --no-check-certificate -q https://github.com/openlink/virtuoso-opensource/archive/develop/7.zip -O virtuoso-opensource.zip
 RUN unzip -q virtuoso-opensource.zip
-RUN cd virtuoso-opensource-develop-7/
-RUN pwd && ls
+WORKDIR /virtuoso-opensource-develop-7/
 RUN dpkg-buildpackage -us -uc
-RUN cd ..
+WORKDIR /
 RUN dpkg -i virtuoso-opensource_7.1_amd64.deb
 RUN service virtuoso-opensource stop
 
