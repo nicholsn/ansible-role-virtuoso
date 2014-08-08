@@ -9,6 +9,7 @@ RUN apt-get install -y libtool flex bison gperf gawk m4 libssl-dev libreadline-d
 RUN wget --no-check-certificate -q https://github.com/openlink/virtuoso-opensource/archive/develop/7.zip -O virtuoso-opensource.zip
 RUN unzip -q virtuoso-opensource.zip
 RUN cd virtuoso-opensource-develop-7/ && dpkg-buildpackage -us -uc
+RUN /etc/init.d/apparmor stop
 RUN cd .. && dpkg -i virtuoso-opensource_7.1_amd64.deb
 RUN service virtuoso-opensource stop
 
