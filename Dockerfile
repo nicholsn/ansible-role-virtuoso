@@ -6,7 +6,7 @@ RUN echo "deb http://us.archive.ubuntu.com/ubuntu/ precise-backports main restri
 RUN apt-get update
 RUN apt-get install -y build-essential debhelper autotools-dev autoconf automake libtool flex bison gperf gawk m4 unzip wget
 RUN wget --no-check-certificate https://github.com/openlink/virtuoso-opensource/archive/develop/7.zip -O virtuoso-opensource.zip
-RUN unzip virtuoso-opensource.zip
+RUN unzip -q virtuoso-opensource.zip
 RUN cd virtuoso-opensource-develop-7/
 RUN dpkg-buildpackage -us -uc
 RUN cd ..
