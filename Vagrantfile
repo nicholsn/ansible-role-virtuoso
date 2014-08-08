@@ -10,11 +10,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # please see the online documentation at vagrantup.com.
 
   # Every Vagrant virtual environment requires a box to build off of.
-  config.vm.box = "ubuntu/trusty64"
+  config.vm.box = "ubuntu/precise64"
 
   # The url from where the 'config.vm.box' box will be fetched if it
   # doesn't already exist on the user's system.
-  config.vm.box_url = "http://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-cloudimg-amd64-vagrant-disk1.box"
+  config.vm.box_url = "http://cloud-images.ubuntu.com/vagrant/precise/current/precise-server-cloudimg-amd64-vagrant-disk1.box"
 
   # Create a forwarded port mapping which allows access to a specific port
   # within the machine from a port on the host machine. In the example below,
@@ -40,23 +40,24 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   #   vb.gui = true
   #
   #   # Use VBoxManage to customize the VM. For example to change memory:
-      vb.customize ["modifyvm", :id, "--cpuexecutioncap", "50"]
-      vb.customize ["modifyvm", :id, "--ioapic", "on"]
-      vb.customize ["modifyvm", :id, "--memory", "4096"]
-      vb.customize ["modifyvm", :id, "--cpus", "4"]
+  #    vb.customize ["modifyvm", :id, "--cpuexecutioncap", "50"]
+  #    vb.customize ["modifyvm", :id, "--ioapic", "on"]
+      vb.customize ["modifyvm", :id, "--memory", "1024"]
+  #    vb.customize ["modifyvm", :id, "--cpus", "4"]
     end
 
   # Pull Docker Container
-  #config.vm.provision :docker do |container|
-  #    container.pull_images "nicholsn/virtuoso"
-  #end
+  config.vm.provision :docker do |container|
+      container.pull_images "ubuntu"
+  end
 
   # Build from source
-  config.vm.provision "shell" do |s|
-    s.inline = "apt-get update"
-    s.inline += "&& apt-get install -y ansible"
-    s.inline += "&& ansible-galaxy install nicholsn.supervisor --force"
-    s.inline += "&& ansible-galaxy install nicholsn.virtuoso --force"
-    s.inline += "&& ansible-playbook -i /etc/ansible/roles/nicholsn.virtuoso/hosts /etc/ansible/roles/nicholsn.virtuoso/local.yml -v"
-  end
+  #config.vm.provision "shell" do |s|
+  #  s.inline = "echo 'deb http://us.archive.ubuntu.com/ubuntu/ precise-backports main restricted universe multiverse' >> /etc/apt/sources.list"
+  #  s.inline += "&& apt-get update"
+  #  s.inline += "&& apt-get install -y ansible"
+  #  s.inline += "&& ansible-galaxy install nicholsn.supervisor --force"
+  #  s.inline += "&& ansible-galaxy install nicholsn.virtuoso --force"
+  #  s.inline += "&& ansible-playbook -i /etc/ansible/roles/nicholsn.virtuoso/hosts /etc/ansible/roles/nicholsn.virtuoso/local.yml -v"
+  #end
 end
