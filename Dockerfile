@@ -10,7 +10,6 @@ RUN wget --no-check-certificate -q https://github.com/openlink/virtuoso-opensour
 RUN unzip -q virtuoso-opensource.zip
 RUN cd virtuoso-opensource-develop-7/ && dpkg-buildpackage -us -uc
 RUN cd .. && dpkg -i virtuoso-opensource_7.1_amd64.deb
-RUN service virtuoso-opensource stop
 
 RUN rm -rf virtuoso-opensource.zip virtuoso-opensource-develop-7/ virtuoso-opensource_7.1_amd64.deb
 RUN rm -rf virtuoso-opensource_7.1.tar.gz virtuoso-opensource-develop-7 virtuoso-opensource_7.1_amd64.changes
