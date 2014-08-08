@@ -1,11 +1,11 @@
 FROM ubuntu:12.04
 MAINTAINER Nolan Nichols <nolan.nichols@gmail.com>
-ENV UPDATED "Fri Aug  8 12:03:07 PDT 2014"
+ENV UPDATED "Fri Aug  8 13:30:08 PDT 2014"
 
 RUN echo "deb http://us.archive.ubuntu.com/ubuntu/ precise-backports main restricted universe multiverse" >> /etc/apt/sources.list
 RUN apt-get update
-RUN apt-get install -y build-essential debhelper autotools-dev autoconf automake libtool flex bison gperf gawk m4 unzip
-RUN wget https://github.com/openlink/virtuoso-opensource/archive/develop/7.zip -o virtuoso-opensource.zip
+RUN apt-get install -y build-essential debhelper autotools-dev autoconf automake libtool flex bison gperf gawk m4 unzip wget
+RUN wget https://github.com/openlink/virtuoso-opensource/archive/develop/7.zip -O virtuoso-opensource.zip
 RUN unzip virtuoso-opensource.zip
 RUN rm virtuoso-opensource.zip
 RUN cd virtuoso-opensource-develop-7/
