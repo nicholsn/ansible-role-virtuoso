@@ -18,6 +18,7 @@ RUN rm -rf virtuoso-opensource_7.1.tar.gz virtuoso-opensource-develop-7 virtuoso
 RUN apt-get remove -y build-essential debhelper autotools-dev autoconf automake unzip wget net-tools
 
 # Run virtuoso in the foreground
+EXPOSE [1111, 8890]
 WORKDIR /var/lib/virtuoso/db
 ENTRYOINT ["/usr/bin/virtuoso-t"]
 CMD ["+wait", "+foreground"]
