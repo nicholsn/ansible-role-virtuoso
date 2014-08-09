@@ -1,7 +1,8 @@
 FROM ubuntu:12.04
-MAINTAINER Nolan Nichols <nolan.nichols@gmail.com>
+MAINTAINER Nolan Nichols <orcid.org/0000-0003-1099-3328>
 ENV UPDATED "Fri Aug  8 13:30:08 PDT 2014"
 
+# Build virtuoso opensource debian package from github
 RUN echo "deb http://us.archive.ubuntu.com/ubuntu/ precise-backports main restricted universe multiverse" >> /etc/apt/sources.list
 RUN apt-get update
 RUN apt-get install -y build-essential debhelper autotools-dev autoconf automake unzip wget net-tools > /dev/null
@@ -11,7 +12,12 @@ RUN unzip -q virtuoso-opensource.zip
 RUN cd virtuoso-opensource-develop-7/ && dpkg-buildpackage -us -uc
 RUN cd .. && dpkg -i virtuoso-opensource_7.1_amd64.deb
 
-RUN rm -rf virtuoso-opensource.zip virtuoso-opensource-develop-7/ virtuoso-opensource_7.1_amd64.deb
+# Remove build files
+RUN rm -rf virtuoso-opensource.zip virtuoso-opensource-develop-7/ virtuoso-opensource_7.1_amd64.deb virtuoso-opensource_7.1.dsc
 RUN rm -rf virtuoso-opensource_7.1.tar.gz virtuoso-opensource-develop-7 virtuoso-opensource_7.1_amd64.changes
 RUN apt-get remove -y build-essential debhelper autotools-dev autoconf automake unzip wget net-tools
 
+# Run virtuoso in the foreground
+WORKDIR /var/lib/virtuoso/db
+ENTRYOINT ["/usr/bin/virtuoso-t"]
+CMD ["+wait", "+foreground"]
