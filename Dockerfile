@@ -15,6 +15,3 @@ RUN rm -rf virtuoso-opensource.zip virtuoso-opensource-develop-7/ virtuoso-opens
 RUN rm -rf virtuoso-opensource_7.1.tar.gz virtuoso-opensource-develop-7 virtuoso-opensource_7.1_amd64.changes
 RUN apt-get remove -y build-essential debhelper autotools-dev autoconf automake unzip wget net-tools
 
-EXPOSE 22 8890:8890 1111:1111
-
-CMD ["/usr/sbin/service virtuoso-opensource start"]
