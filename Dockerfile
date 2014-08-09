@@ -19,6 +19,6 @@ RUN apt-get remove -y build-essential debhelper autotools-dev autoconf automake 
 
 # Run virtuoso in the foreground
 EXPOSE 8890
+EXPOSE 1111
 WORKDIR /var/lib/virtuoso/db
-ENTRYOINT ["/usr/bin/virtuoso-t"]
-CMD ["+wait", "+foreground"]
+CMD ["/usr/bin/virtuoso-t", "+wait", "+foreground"]
