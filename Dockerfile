@@ -17,4 +17,4 @@ RUN apt-get remove -y build-essential debhelper autotools-dev autoconf automake 
 
 EXPOSE 22 8890:8890 1111:1111
 
-CMD ["service virtuoso-opensource start"]
+CMD ["/usr/sbin/service virtuoso-opensource start"]
